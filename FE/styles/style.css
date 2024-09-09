@@ -1,0 +1,21 @@
+.head{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    animation: infinite;
+}
+
+.corporea{
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding: 40px;
+}

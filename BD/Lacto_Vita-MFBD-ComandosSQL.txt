@@ -1,0 +1,50 @@
+create database lacto_vita;
+
+use lacto_vita;
+
+CREATE TABLE Produto (
+    idproduto INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    Descricao VARCHAR(125),
+    valor DOUBLE NOT NULL,
+    fk_Estoque_idestoque INT
+);
+
+CREATE TABLE Venda (
+    idvenda INT PRIMARY KEY AUTO_INCREMENT,
+    valor DOUBLE NOT NULL,
+    quantidade INT NOT NULL,
+    data DATE
+);
+
+CREATE TABLE Estoque (
+    idestoque INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    endereco VARCHAR(45) NOT NULL,
+    quantidade INT NOT NULL,
+    validade DATE NOT NULL
+);
+
+CREATE TABLE contem (
+    fk_Produto_idproduto INT,
+    fk_Venda_idvenda INT
+);
+ 
+ALTER TABLE Produto ADD CONSTRAINT FK_Produto_2
+    FOREIGN KEY (fk_Estoque_idestoque)
+    REFERENCES Estoque (idestoque)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE contem ADD CONSTRAINT FK_contem_1
+    FOREIGN KEY (fk_Produto_idproduto)
+    REFERENCES Produto (idproduto)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE contem ADD CONSTRAINT FK_contem_2
+    FOREIGN KEY (fk_Venda_idvenda)
+    REFERENCES Venda (idvenda)
+    ON DELETE SET NULL;
+    
+Select * from produto;
+select * from venda;
+select * from estoque;
